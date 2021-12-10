@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Move Controller</title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="webcam__wrapper">
+        <video playsinline muted id="webcam" class="webcam"></video>
+    </div>
+
+    <script>
+        window.onload = () => {
+            window.electron.ipcRenderer.ready();
+        }
+
+        window.electron.ipcRenderer.on("main-predict", (response) => {
+            console.log("Main Window response: ", response);
+            const { action, duratation } = response[0];  
+            window.fadeToAction(action, duratation);
+        });
+    </script>
+    <script src="webcam.js"></script>
+    <script type="module" src="makeScene.js"></script>
+</body>
+
+</html>
