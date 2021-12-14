@@ -2,9 +2,6 @@ import { contextBridge, ipcRenderer } from "electron";
 
 contextBridge.exposeInMainWorld("electron", {
   ipcRenderer: {
-    ready() {
-      ipcRenderer.send("worker-ready");
-    },
     setPrediction(value: string) {
       ipcRenderer.send("worker-predict", value);
     },

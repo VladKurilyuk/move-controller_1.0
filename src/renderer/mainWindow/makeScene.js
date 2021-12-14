@@ -115,7 +115,6 @@ function createGUI(model, animations) {
 }
 
 function fadeToAction(name, duration) {
-    console.log('Fade to action');
     previousAction = activeAction;
     activeAction = actions[name];
 

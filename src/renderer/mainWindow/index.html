@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <title>Move Controller</title>
     <meta charset="utf-8">
     <meta name="viewport"
         content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
@@ -15,12 +14,7 @@
     </div>
 
     <script>
-        window.onload = () => {
-            window.electron.ipcRenderer.ready();
-        }
-
         window.electron.ipcRenderer.on("main-predict", (response) => {
-            console.log("Main Window response: ", response);
             const { action, duratation } = response[0];  
             window.fadeToAction(action, duratation);
         });

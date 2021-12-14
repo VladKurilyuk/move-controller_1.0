@@ -3,9 +3,6 @@ import * as path from "path";
 
 contextBridge.exposeInMainWorld("electron", {
   ipcRenderer: {
-    ready() {
-      ipcRenderer.send("main-ready");
-    },
     on(channel: string, func: (...args: unknown[]) => void) {
       const validChannels: string[] = ["main-predict"];
       if (validChannels.includes(channel)) {

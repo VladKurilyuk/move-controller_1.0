@@ -2,20 +2,35 @@
   "name": "move-controller_v.1.0",
   "version": "1.0.0",
   "description": "Move controller electron app without react",
+  "main": "dist/main.js",
+  "author": "madesine",
+  "license": "ISC",
   "scripts": {
+    "release": "npm run build && rmdir /Q /S release && mkdir release && electron-builder --publish=never",
     "build": "tsc",
     "watch": "tsc -w",
     "lint": "eslint -c .eslintrc --ext .ts ./src",
+    "start": "tsc && electron ./dist/main.js",
     "start:dev": "npm run build && electromon ./dist/main.js"
   },
-  "author": "madesine",
-  "license": "ISC",
+  "build": {
+    "appId": "com.madesine.robocontroller",
+    "productName": "Robot controller",
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "icon": "build/robotics.ico",
+      "target": "nsis"
+    }
+  },
   "devDependencies": {
     "@types/node": "^16.11.12",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
     "electromon": "^1.0.10",
     "electron": "^16.0.4",
+    "electron-builder": "^22.14.5",
     "eslint": "^8.4.1",
     "fingerpose": "^0.1.0",
     "typescript": "^4.5.2"

@@ -13,12 +13,6 @@
 <body>
     <video autoplay playsinline muted id="webcam" width="640" height="480"></video>
 
-    <script>
-        window.onload = () => {
-            console.log("Ready");
-            window.electron.ipcRenderer.ready();
-        };
-    </script>
     <script src="gestures/index.js"></script>
     <script>
         async function load() {
@@ -51,7 +45,6 @@
                         return (p.score > c.score) ? p : c;
                     });
 
-                    console.log("Fire: ", result.name);
                     window.electron.ipcRenderer.setPrediction(result.name);
                 }
             });
